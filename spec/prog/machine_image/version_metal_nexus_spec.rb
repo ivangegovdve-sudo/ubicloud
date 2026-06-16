@@ -13,9 +13,7 @@ RSpec.describe Prog::MachineImage::VersionMetalNexus do
   let(:store) { metal.store }
   let(:daemon) { "archive_#{miv.ubid}" }
   let(:stats_path) { "/tmp/archive_stats_#{miv.ubid}.json" }
-  let(:strand) {
-    Strand.create_with_id(metal, prog: "MachineImage::VersionMetalNexus", label: "wait", stack: [{}])
-  }
+  let(:strand) { Strand[metal.id] }
   let(:prog) { described_class.new(strand) }
 
   describe ".assemble_from_vm" do
